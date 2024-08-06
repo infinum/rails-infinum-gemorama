@@ -1,0 +1,55 @@
+#!/bin/sh
+
+##############################################################################
+##############################################################################
+
+# variables
+from=2024-01-01
+to=2024-08-06
+project_path=
+
+## Usage info
+show_help() {
+  cat << EOF
+Usage: ${0##*/} [-h] [-f FROM] [-t TO] PROJECT_PATH
+
+Create a chart of a Ruby project that shows the count of outdated gems for each day.
+
+    -h          display this help and exit
+    -f FROM     starting date
+    -t TO       ending date
+
+Examples:
+script/chart -f 2024-07-01 -t 2024-08-01 ~/Projects/cool_rails_app
+
+The above file will give you a path where you'll be able to find an HTML page which contains TBD
+EOF
+}
+
+OPTIND=1
+while getopts "h:f:t:" opt; do
+    case "$opt" in
+        h)
+            show_help
+            exit 0
+            ;;
+        f)  from=$OPTARG
+            ;;
+        t)  to=$OPTARG
+            ;;
+        '?')
+            show_help >&2
+            exit 1
+            ;;
+    esac
+done
+shift "$((OPTIND-1))" # Shift off the options and optional
+
+project_path=$1
+if [ -z "$project_path" ]; then
+  show_help >&2
+  exit 1
+fi
+
+echo "Generating chart for $project_path"
+bundle exec rake chart:create[$from,$to,$project_path]

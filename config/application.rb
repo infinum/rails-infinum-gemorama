@@ -39,6 +39,8 @@ module RailsInfinumGemorama
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    routes.default_url_options[:host] = 'http://localhost:3000'
+
     def secrets
       config_for(:secrets)
     end

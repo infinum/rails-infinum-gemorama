@@ -21,5 +21,8 @@
     "eslint": "^9.8.0",
     "postcss": "^8.4.41",
     "stylelint": "^16.8.1"
+  },
+  "dependencies": {
+    "echarts": "^5.5.1"
   }
 }
