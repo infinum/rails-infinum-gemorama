@@ -1,0 +1,46 @@
+gemfile: Gemfile
+
+CommitMsg:
+  HardTabs:
+    enabled: true
+
+PreCommit:
+  BundleAudit:
+    enabled: true
+    flags: ['--update']
+    on_warn: fail
+    command: ['bundle', 'exec', 'bundle-audit']
+
+  BundleCheck:
+    enabled: true
+
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    command: ['bundle', 'exec', 'rubocop']
+
+  SlimLint:
+    enabled: true
+    on_warn: fail
+    command: ['bundle', 'exec', 'slim-lint']
+
+  RailsSchemaUpToDate:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/db/structure.sql'
+
+  HardTabs:
+    enabled: true
+
+PrePush:
+  Brakeman:
+    enabled: true
+    command: ['bundle', 'exec', 'brakeman']
+
+  ZeitwerkCheck:
+    enabled: true
+    description: 'Checks project structure for Zeitwerk compatibility'
+    command: ['bundle', 'exec', 'rails zeitwerk:check']

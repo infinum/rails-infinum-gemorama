@@ -1,0 +1,15 @@
+database_host: localhost
+database_username: postgres
+database_password: ''
+database_name: ''
+database_port: '5432'
+
+bugsnag_api_key: ''
+
+redis_url: 'redis://localhost:6379'
+
+development:
+  secret_key_base: 8ed61e4336bea5c13d6345523bcc1f62bd8778b11d0dcc488261db9b98b80baafd68341b22b768af6cc2fc15d52a30990e85e44f82f07973356c56f3186a03cc
+
+test:
+  secret_key_base: a15b7fd17a9f0eab6f5c9ff3dc19882941e68ea714fc661ff9b290aeeb27ac978aaadb2999fa03b5bccb5b0458831041613513b476d0c5cc2f6c8c8a9d8883cc

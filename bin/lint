@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+echo "=========== zeitwerk check ==========="
+time bundle exec rails zeitwerk:check
+
+echo "=========== rubocop  ==========="
+time bundle exec rubocop --format simple --format github --color --parallel
+
+echo "=========== slim lint ==========="
+time bundle exec slim-lint app/views
+
+echo "=========== JS lint ==========="
+time yarn lint-js app
+
+echo "=========== CSS lint ==========="
+time yarn lint-css --allow-empty-input app

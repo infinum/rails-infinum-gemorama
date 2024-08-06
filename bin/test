@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+echo "=========== rails db:test:prepare ==========="
+time RAILS_ENV=test bundle exec rails db:test:prepare
+
+echo "=========== rspec ==========="
+time bundle exec rspec --force-color

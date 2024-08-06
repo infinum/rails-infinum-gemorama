@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build
+    uses: infinum/default_rails_template/.github/workflows/build.yml@v1
+    with:
+      postgres_image: '13.2'
+      ci_steps: 'bin/audit bin/lint bin/test'
+      # slack_notification_channel: 'slack-channel-name-without-hash-symbol' # UNCOMMENT THIS IF YOU WANT SLACK NOTIFICATIONS, DELETE OTHERWISE
+      # notify_on: 'all' # Possible values: 'success', 'failure', or 'all'
+    secrets:
+      VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+      VAULT_AUTH_METHOD: ${{ secrets.VAULT_AUTH_METHOD }}
+      VAULT_AUTH_ROLE_ID: ${{ secrets.VAULT_AUTH_ROLE_ID }}
+      VAULT_AUTH_SECRET_ID: ${{ secrets.VAULT_AUTH_SECRET_ID }}
+      # SLACK_BOT_TOKEN: ${{ secrets.RAILS_TEAM_SLACK_BOT_TOKEN }} # UNCOMMENT THIS IF YOU WANT SLACK NOTIFICATIONS, DELETE OTHERWISE

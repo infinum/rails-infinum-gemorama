@@ -1,0 +1,25 @@
+{
+  "name": "rails_infinum_gemorama",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "lint-css": "stylelint",
+    "lint-js": "eslint"
+  },
+  "stylelint": {
+    "extends": "@infinumrails/stylelint-config-scss"
+  },
+  "eslintConfig": {
+    "extends": "@infinumrails/eslint-config-js"
+  },
+  "engines": {
+    "node": "18.18.2"
+  },
+  "devDependencies": {
+    "@infinumrails/eslint-config-js": "^0.1.1",
+    "@infinumrails/stylelint-config-scss": "^0.1.1",
+    "eslint": "^9.8.0",
+    "postcss": "^8.4.41",
+    "stylelint": "^16.8.1"
+  }
+}
