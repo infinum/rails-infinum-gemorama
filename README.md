@@ -1,6 +1,6 @@
 # Gemorama
 
-This is a Rails project used for generating charts for Ruby projects. The chart depicts how many outdated gems a Ruby project has for every date in the chart:
+This Rails project generates charts that visualize the number of outdated gems in Ruby projects over time. The charts display a timeline with the count of outdated gems for each date.
 
 ![Example chart](public/example.png)
 
@@ -26,13 +26,15 @@ script/load-pg-dump -d rails_infinum_gemorama_development -c ~/Downloads/public_
 
 ## Generate chart
 
-Now that you have everything in place, you can generate charts for your projects using:
+With everything set up, you can generate charts for your projects using the following command:
 
 ```bash
 script/chart -f 2024-07-29 -t 2024-08-02 ~/Code/Projects/a-cool-rails-rails-project
 ```
 
-To get more info on the `script/chart` options, run:
+If you need to specify a different branch, use the `-b` option.
+
+For additional information about the `script/chart` options, run:
 
 ```bash
 script/chart -h
