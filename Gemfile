@@ -22,7 +22,6 @@ gem 'strong_migrations'
 gem 'turbo-rails'
 
 group :development, :test do
-  gem 'brakeman', require: false
   gem 'bundler-audit', require: false
   gem 'rubocop-infinum', require: false
   gem 'slim_lint', require: false

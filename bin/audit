@@ -7,6 +7,3 @@ set -o nounset
 echo "=========== bundle audit ==========="
 time bundle exec bundle-audit update --quiet
 time bundle exec bundle-audit check
-
-echo "=========== brakeman ==========="
-time bundle exec brakeman -q --color

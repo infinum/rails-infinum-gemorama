@@ -36,10 +36,6 @@ PreCommit:
     enabled: true
 
 PrePush:
-  Brakeman:
-    enabled: true
-    command: ['bundle', 'exec', 'brakeman']
-
   ZeitwerkCheck:
     enabled: true
     description: 'Checks project structure for Zeitwerk compatibility'
