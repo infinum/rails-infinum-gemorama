@@ -9,8 +9,8 @@ gem 'bootsnap', require: false
 gem 'bugsnag'
 gem 'figaro'
 gem 'importmap-rails'
-gem 'progress_bar'
 gem 'pg', '~> 1.1'
+gem 'progress_bar'
 gem 'pry-byebug'
 gem 'pry-rails'
 gem 'puma', '>= 5.0'
@@ -40,8 +40,4 @@ end
 
 group :test do
   gem 'rspec-rails'
-end
-
-group :deploy do
-  gem 'mina-infinum', require: false
 end

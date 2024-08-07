@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'csv'
+
 module Chart
   class FileStorage
     class << self
@@ -11,7 +13,7 @@ module Chart
         file = new(name:)
         raise ActiveRecord::RecordNotFound, 'file not found' unless File.exist?(file.file_path)
 
-        file.file_path
+        file
       end
     end
 
@@ -35,6 +37,10 @@ module Chart
 
     def file_path
       Rails.root.join("public/data/#{name}.csv")
+    end
+
+    def as_csv
+      CSV.read(file_path, col_sep: ';')
     end
 
     private

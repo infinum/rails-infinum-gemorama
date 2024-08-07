@@ -10,7 +10,7 @@ namespace :chart do
 
     datafile = Chart.generate(start_date:, end_date:, branch:, repo:)
 
-    puts 'After turning on the Rails server, you can view your data under the following link:'
-    puts Rails.application.routes.url_helpers.project_url(datafile.name)
+    puts "\e[32mDone!\e[0m\n\nAfter turning on the Rails server, you can view your data under the following link:\n"
+    puts "\e[34m#{Rails.application.routes.url_helpers.project_url(datafile.name)}\e[0m"
   end
 end
