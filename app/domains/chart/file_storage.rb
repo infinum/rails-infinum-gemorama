@@ -8,7 +8,7 @@ module Chart
       end
 
       def find(name)
-        file = new(name: name)
+        file = new(name:)
         raise ActiveRecord::RecordNotFound, 'file not found' unless File.exist?(file.file_path)
 
         file.file_path
@@ -34,7 +34,7 @@ module Chart
     end
 
     def file_path
-      "#{Rails.root}/public/data/#{name}.csv"
+      Rails.root.join("public/data/#{name}.csv")
     end
 
     private

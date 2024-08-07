@@ -6,6 +6,7 @@
 # variables
 from=2024-01-01
 to=2024-08-06
+branch=main
 project_path=
 
 ## Usage info
@@ -18,6 +19,7 @@ Create a chart of a Ruby project that shows the count of outdated gems for each 
     -h          display this help and exit
     -f FROM     starting date
     -t TO       ending date
+    -b BRANCH   branch name (default is "main")
 
 Examples:
 script/chart -f 2024-07-01 -t 2024-08-01 ~/Projects/cool_rails_app
@@ -27,7 +29,7 @@ EOF
 }
 
 OPTIND=1
-while getopts "h:f:t:" opt; do
+while getopts "h:f:t:b:" opt; do
     case "$opt" in
         h)
             show_help
@@ -36,6 +38,8 @@ while getopts "h:f:t:" opt; do
         f)  from=$OPTARG
             ;;
         t)  to=$OPTARG
+            ;;
+        b)  branch=$OPTARG
             ;;
         '?')
             show_help >&2
@@ -52,4 +56,4 @@ if [ -z "$project_path" ]; then
 fi
 
 echo "Generating chart for $project_path"
-bundle exec rake chart:create[$from,$to,$project_path]
+bundle exec rake chart:create[$from,$to,$branch,$project_path]
