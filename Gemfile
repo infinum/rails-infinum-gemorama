@@ -33,8 +33,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'bullet'
   gem 'overcommit', require: false
-
-  gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
 end
 
 group :test do
