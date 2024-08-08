@@ -3,4 +3,4 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-# leaving it here as it's required by the GHA
+cp config/application.example.yml config/application.yml
