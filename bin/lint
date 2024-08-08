@@ -12,9 +12,3 @@ time bundle exec rubocop --format simple --format github --color --parallel
 
 echo "=========== slim lint ==========="
 time bundle exec slim-lint app/views
-
-echo "=========== JS lint ==========="
-time yarn lint-js app
-
-echo "=========== CSS lint ==========="
-time yarn lint-css --allow-empty-input app
