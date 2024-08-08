@@ -48,7 +48,7 @@ module Chart
       end
     end
 
-    def outdated_gem_count(time)
+    def outdated_gem_count(time) # rubocop:disable Metrics/AbcSize
       count = 0
       parser.specs.each do |gem_specification|
         gem = Rubygem.find_by(name: gem_specification.name)
