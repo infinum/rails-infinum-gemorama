@@ -4,13 +4,14 @@ module Chart
   class Generator
     attr_reader :days
 
-    def initialize(start_date:, end_date:, branch:, repo:)
+    def initialize(start_date:, end_date:, branch:, step_factor:, repo:)
       @start_date = start_date
       @end_date = end_date
       @branch = branch
+      @step_factor = step_factor.to_i
       @repo = repo
       @days = []
-      @progress = ProgressBar.new((end_date - start_date).to_i + 1)
+      @progress = ProgressBar.new(((end_date - start_date).to_i + 1) / @step_factor)
     end
 
     def create
@@ -28,6 +29,7 @@ module Chart
     attr_reader :start_date
     attr_reader :end_date
     attr_reader :branch
+    attr_reader :step_factor
     attr_reader :progress
     attr_reader :repo
     attr_writer :days
@@ -35,7 +37,7 @@ module Chart
     def map_days
       previous_sha = nil
 
-      (start_date..end_date).map do |date|
+      (start_date..end_date).step(step_factor).map do |date|
         sha = `cd #{repo} && git rev-list -1 --before="#{date}" #{branch}`.strip
 
         `cd #{repo} && OVERCOMMIT_DISABLE=1 git checkout #{sha} Gemfile.lock > /dev/null 2>&1` if previous_sha != sha
